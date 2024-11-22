@@ -16,6 +16,7 @@
         <dt class="bold">Number of episodes</dt>
         <dd class="caption">{{ animeDetail.episode }}</dd>
         <hr />
+        <dd *ngFor="let season of animeDetail.seasons"> {{season.name}}: {{season.chapters}} </dd>
         <a routerLink="/animes/list" class="btn btn-primary">Back</a>
       </dl>
     </div>

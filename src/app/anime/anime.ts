@@ -1,3 +1,5 @@
+import { Season } from "../season/season";
+
 export class Anime {
   id: number;
   name: string;
@@ -7,6 +9,7 @@ export class Anime {
   categorie: string;
   studio: string;
   img: string;
+  seasons: Season[];
 
   constructor(
     id: number,
@@ -17,6 +20,7 @@ export class Anime {
     categorie: string,
     studio: string,
     img: string,
+    seasons: Season[]
   ) {
     this.id = id;
     this.name = name;
@@ -26,5 +30,6 @@ export class Anime {
     this.categorie= categorie,
     this.studio= studio,
     this.img = img;
+    this.seasons = seasons;
   }
  }
