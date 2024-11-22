@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Anime } from '../anime';
+import { ActivatedRoute } from '@angular/router';
+import { AnimeService } from '../anime.service';
 
 @Component({
   selector: 'app-anime-detail',
@@ -8,11 +10,27 @@ import { Anime } from '../anime';
 })
 export class AnimeDetailComponent implements OnInit {
 
+  animeId!: string;
   @Input() animeDetail!: Anime;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private animeService: AnimeService
+  ) { }
 
+  getAnime(){
+    this.animeService.getAnime(this.animeId).subscribe((anime: Anime)=>{
+      this.animeDetail = anime;
+    })
+  }
+ 
   ngOnInit() {
+    if(this.animeDetail === undefined){
+      this.animeId = this.route.snapshot.paramMap.get('id')!
+      if (this.animeId) {
+        this.getAnime();
+      }
+    }
   }
 
 
